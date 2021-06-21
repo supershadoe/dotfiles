@@ -1,0 +1,10 @@
+[user]
+	email = supershadoe5@gmail.com
+	name = supershadoe
+	signingkey = B7F3A8C689750C73
+[commit]
+	gpgsign = true
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret
+[init]
+	defaultBranch = master

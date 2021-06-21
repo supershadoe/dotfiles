@@ -1,0 +1,54 @@
+# Some commands to run #
+## Removes zsh command and directory history, less history and python shell history ##
+unset HISTFILE
+histfiles=("$HOME/.zsh_history" "$HOME/.zdirs" "$HOME/.lesshst" "$HOME/.python_history")
+for i in $histfiles; do [ -f $i ] && rm $i; done; unset histfiles
+
+## Open up editor shortcut ##
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^Xe' edit-command-line
+
+## Zsh prompt styling ##
+### Change the default left prompt
+autoload -U colors && colors
+zstyle ':prompt:grml:left:setup' items venv change-root path percent
+zstyle ':prompt:grml:left:items:path' pre "%{${fg[green]}%} ("
+zstyle ':prompt:grml:left:items:path' post ") %{$reset_color%}"
+### Change the default right prompt
+zstyle ':prompt:grml:right:setup' items vcs rc sad-smiley
+### Add virtualenv prompt
+function venv_prompt() {
+	REPLY=${VIRTUAL_ENV+(${VIRTUAL_ENV:t})}
+}
+grml_theme_add_token venv -f venv_prompt '%F{magenta}' '%f'
+### Git prompt
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr '!'
+zstyle ':vcs_info:*' stagedstr '+'
+zstyle ':vcs_info:git*' formats "%{${fg[green]}%}[%{${fg[cyan]}%}%b%{${fg[yellow]}%}%m%u%c%{${fg[green]}%}]%{$reset_color%}"
+
+## Export some variables ##
+export PASSWORD_STORE_DIR="$HOME/.local/share/pass"
+
+# Aliases
+## Aliases to commands
+alias cls='printf "\033c"'
+
+## Alias for adb connect
+alias adbrc='adb devices | grep -q "<serial no>" && adb tcpip 5555 && adb connect "<ip address>:5555" && echo "connected via tcp"'
+alias adbc='adb connect <ip address>:5555'
+
+# Functions
+## Setup virtualenv
+### Don't add the venv folder also into argument
+setupvenv() { source $1/venv/bin/activate && cd $1 }
+
+## Pacman functions
+pacdepfor() { pacman -Qi $1 | grep "^Req" | sed -e "s/Required By     : //g" }
+pacexe() { pacman -Qo $1 }
+
+# GNOME Extensions
+ins_ext() {
+	dbus-send --session --print-reply --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Extensions.InstallRemoteExtension string:"$1"
+}
