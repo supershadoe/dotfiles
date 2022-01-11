@@ -1,0 +1,94 @@
+favorites=chromium.desktop,chrome-mpcomghdckicgdejefbcbgafgejohdka-Default.desktop,chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Default.desktop,chrome-cinhimbnkkaeohfgghhklpknlkffjgod-Default.desktop,Zoom.desktop,chrome-bbdoccdkppnllglggffobbfkhbdfhdbo-Default.desktop,com.obsproject.Studio.desktop,code-oss.desktop,jetbrains-toolbox.desktop,jetbrains-studio.desktop,jetbrains-idea.desktop,xfce4-file-manager.desktop,xfce4-terminal.desktop
+recent=
+button-icon=start-here
+button-single-row=false
+show-button-title=false
+show-button-icon=true
+launcher-show-name=true
+launcher-show-description=true
+launcher-show-tooltip=true
+launcher-icon-size=2
+hover-switch-category=false
+category-show-name=true
+category-icon-size=1
+sort-categories=true
+view-mode=0
+default-category=0
+recent-items-max=0
+favorites-in-recent=false
+position-search-alternate=false
+position-commands-alternate=false
+position-categories-alternate=true
+position-categories-horizontal=false
+stay-on-focus-out=false
+profile-shape=0
+confirm-session-command=false
+menu-width=644
+menu-height=427
+menu-opacity=90
+command-settings=xfce4-settings-manager
+show-command-settings=true
+command-lockscreen=xflock4
+show-command-lockscreen=true
+command-switchuser=gdmflexiserver
+show-command-switchuser=false
+command-logoutuser=xfce4-session-logout --logout --fast
+show-command-logoutuser=false
+command-restart=/home/supershadoe/.local/share/xfce/reboot-menu
+show-command-restart=true
+command-shutdown=xfce4-session-logout --halt --fast
+show-command-shutdown=false
+command-suspend=xfce4-session-logout --suspend
+show-command-suspend=false
+command-hibernate=xfce4-session-logout --hibernate
+show-command-hibernate=false
+command-logout=xfce4-session-logout
+show-command-logout=true
+command-menueditor=menulibre
+show-command-menueditor=true
+command-profile=mugshot
+show-command-profile=false
+search-actions=7
+
+[action0]
+name=Man Pages
+pattern=#
+command=exo-open --launch TerminalEmulator man %s
+regex=false
+
+[action1]
+name=Google
+pattern=?
+command=exo-open --launch WebBrowser https://google.com/search?q=%u
+regex=false
+
+[action2]
+name=Wikipedia
+pattern=?w
+command=exo-open --launch WebBrowser https://en.wikipedia.org/wiki/%u
+regex=false
+
+[action3]
+name=Run in Terminal
+pattern=!
+command=exo-open --launch TerminalEmulator %s
+regex=false
+
+[action4]
+name=Open URI
+pattern=^(file|http|https):\\/\\/(.*)$
+command=exo-open \\0
+regex=true
+
+[action5]
+name=YouTube Music
+pattern=?myt
+command=exo-open --launch WebBrowser https://music.youtube.com/search?q=%u
+regex=false
+
+[action6]
+name=YouTube
+pattern=?yt
+command=exo-open --launch WebBrowser https://youtube.com/search?q=%u
+regex=false
+
