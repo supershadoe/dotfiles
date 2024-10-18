@@ -125,10 +125,13 @@ set number
 # Highlight all search matches
 set hlsearch
 
-# ----- Disable viminfo -----
+# Disable viminfo
 set viminfofile=NONE
 
-# ----- vim-airline enable powerline -----
+# Dark mode readable text
+set background=dark
+
+# vim-airline
 g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
   g:airline_symbols = {}
