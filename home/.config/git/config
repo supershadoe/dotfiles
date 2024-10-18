@@ -1,15 +1,18 @@
+[commit]
+	gpgsign = true
+[core]
+	autocrlf = input
+[credential]
+	helper = "/usr/lib/git-core/git-credential-libsecret"
+[diff "sqlite"]
+	binary = true
+	textconv = "echo .dump | sqlite3"
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
 [user]
 	email = supershadoe@proton.me
 	name = supershadoe
 	signingkey = 78D9A759CF62C954
-[commit]
-	gpgsign = true
-[credential]
-	helper = /usr/lib/git-core/git-credential-libsecret
-[init]
-	defaultBranch = main
-[diff "sqlite"]
-	binary = true
-	textconv = "echo .dump | sqlite3"
-[push]
-	autoSetupRemote = true
+
