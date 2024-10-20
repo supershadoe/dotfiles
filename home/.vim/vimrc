@@ -131,12 +131,10 @@ set viminfofile=NONE
 # Dark mode readable text
 set background=dark
 
-# vim-airline
-g:airline_powerline_fonts = 1
-if !exists('g:airline_symbols')
-  g:airline_symbols = {}
-endif
-g:airline_symbols.linenr = ''
+# lightline for status line theming
+set laststatus=2
+set noshowmode
+g:lightline = { 'colorscheme': 'wombat' }
 
 # Keymap to copy text in wayland
 # Arch vim isn't compiled with clipboard feature
