@@ -24,7 +24,8 @@ function clip_video()
 
   local op_dir, _ = utils.split_path(ip_path)
   local op_ext = mp.get_property("filename"):match("[^.]+$")
-  local op_name = string.format("%s_%s-%s.%s",
+  local op_name = string.format(
+    "%s_%s-%s.%s",
     mp.get_property("filename/no-ext"),
     string.gsub(start_time_f, ":", "."),
     string.gsub(end_time_f, ":", "."),
@@ -32,7 +33,7 @@ function clip_video()
   local op_path = utils.join_path(op_dir, op_name)
 
   local command = {
-    "ffmpeg", "-hide_banner", "-loglevel", "error",
+    "/usr/bin/ffmpeg", "-hide_banner", "-loglevel", "error",
     "-ss", tostring(start_time),
     "-i", tostring(ip_path),
     "-t", tostring(end_time-start_time)
