@@ -1,9 +1,9 @@
-[submodule "home/.vim/pack/plugins/start/vim-illuminate"]
+[submodule "vim-illuminate"]
 	path = home/.config/vim/pack/plugins/start/vim-illuminate
 	url = https://github.com/RRethy/vim-illuminate
-[submodule "home/.vim/pack/plugins/start/vim-toml"]
+[submodule "vim-toml"]
 	path = home/.config/vim/pack/plugins/start/vim-toml
 	url = https://github.com/cespare/vim-toml
-[submodule "home/.vim/pack/plugins/start/lightline"]
+[submodule "lightline"]
 	path = home/.config/vim/pack/plugins/start/lightline
 	url = https://github.com/itchyny/lightline.vim
