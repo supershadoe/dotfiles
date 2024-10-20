@@ -1,14 +1,11 @@
 # dotfiles
-My dotfiles
+A snapshot of my current config (runs on WSL2 with Arch distro)
 
 ## Folders
-- arch-apps : Not an actual folder but holds my list of Packages required to be reinstalled in case of reinstallation
-- bundle : ruby bundle config in ~/.bundle
-- config : ~/.config folder
-- etc : /etc folder
-- local : ~/.local folder
-- vim : ~/.vim folder
+Each folder is set relative to system root /.
 
-## Files
-- zshrc : .zshrc.local file which is automatically sourced by grml-zshrc
-- zshenv : .zshenv file to declare environment variables
+## Usage
+Do not forget to clone the submodules as well using ```bash
+git clone --recurse-submodules https://github.com/supershadoe/dotfiles
+```
+
