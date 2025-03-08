@@ -15,4 +15,8 @@
 	email = supershadoe@proton.me
 	name = supershadoe
 	signingkey = 78D9A759CF62C954
-
+[filter "lfs"]
+        process = git-lfs filter-process
+        required = true
+        clean = git-lfs clean -- %f
+        smudge = git-lfs smudge -- %f
