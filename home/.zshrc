@@ -11,7 +11,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 alias ls="ls --color=auto --hyperlink=auto -v"
 
 # pyenv config
-eval "$(pyenv init -)"
+which pyenv 2>&1 > /dev/null && eval "$(pyenv init -)"
 
 # Functions
 ## To activate virtualenv for a python project
