@@ -6,11 +6,7 @@ Each folder is set relative to system root /.
 
 ## Files
 `packages` file is a list of packages currently installed on the image
-generated using
-
-```bash
-paru -Qe | cut -d\  -f1 > packages
-```
+generated using `paru -Qqe`
 
 ## Usage
 Do not forget to clone the submodules as well using
