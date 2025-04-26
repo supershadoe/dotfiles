@@ -16,18 +16,30 @@ which pyenv 2>&1 > /dev/null && eval "$(pyenv init -)"
 # Functions
 ## To activate virtualenv for a python project
 function setupvenv() {
-    local vf=${1:-$PWD}
-    [ $vf = $HOME ] && [ ! -f $vf/venv/bin/activate ] && \
-        echo -e "\e[1;31mSir, This is \e[0;9mWendy's\e[0;1;32m \e]8;;file://\
-$HOST$vf\e\\HOME\e]8;;\e\\ \e[1;31m!\e[0m" && \
-        return
-    [ -f $vf/venv/bin/activate ] && \
-        source $vf/venv/bin/activate && cd $vf || \
-        echo -e "\e[0;31mThere is \e[1mNO virtualenv \e[0;31mcalled \e[1;36m\
-venv\e[0;31m setup in \e[1;32m\e]8;;file://$HOST$(realpath $vf)\e\\$vf\e]8;;\
-\e\\ \e[0;31m!\e[0m"
+    local venv_dir=${1:-"venv"}
+    local work_dir=${1:-$PWD}
+    if [ -f "$work_dir/$venv_dir/bin/activate" ]
+    then
+        source "$work_dir/$venv_dir/bin/activate" && cd $work_dir
+    else
+        local fs_t1="\e[0;31m%s \e[1m%s \e[0;31m%s \e[1;36m%s\e[0;31m %s"
+        local fs_link="\e[1;32m\e]8;;%s\e\\%s\e]8;;\e\\"
+        local fs_t2="\e[0;31m%s\e[0m\n"
+        printf "$fs_t1 $fs_link $fs_t2" \
+            "There is" "NO virtualenv" "called" "$venv_dir" "setup in" \
+            "file://$HOST$(realpath $work_dir)" "$work_dir" "!"
+    fi
 }
 
-# Note: The garbled mess of the echo strings are
-# "Sir, This is ~~Wendy's~~ HOME !" and
-# "There is NO virtualenv called venv setup in $vf !" respectively
+# Kill old sessions using loginctl while on SSH
+function kill_other_sessions_self() {
+    for i in $(loginctl list-sessions \
+        | awk \
+            -v uid=$UID \
+            -v tty=$(tty | cut -d/ -f3-) \
+            '$2 == uid && $6 == "user" && $7 != tty { print $1 }'\
+    )
+        do loginctl kill-session $i
+    done
+    unset i
+}
